@@ -1,0 +1,98 @@
+<template>
+  <div class="promo-info-link">
+    <button @click="discrement" class="promo-info-link__btn-left">
+      <fa icon="angle-left" />
+    </button>
+    <ul class="promo-info-link__items">
+      <li class="promo-info-link__item">
+        <a class="promo-info-link__link" :href="links[num].url">
+          {{ links[num].textLink }}
+          <span class="color"> {{ links[num].textLinkOn }}</span></a
+        >
+      </li>
+    </ul>
+    <button @click="increment" class="promo-info-link__btn-right">
+      <fa icon="angle-right" />
+    </button>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+
+const num = ref(0);
+
+/**
+ * Рекламные ссылки
+ *  Массив объектов
+ * @todo ыцы
+ */
+const links = [
+  { url: "/", textLink: "Это тестовая ссылка", textLinkOn: "Подпишитесь на Ютуб Канал" },
+  {
+    url: "/calculation/seeding",
+    textLink: "Весна близко!",
+    textLinkOn: " Планируй свой огород!",
+  },
+  {
+    url: "https://kochenov.ru",
+    textLink: "Разработчик сайта",
+    textLinkOn: " Коченов Дмитрий",
+  },
+];
+const increment = () => {
+  num.value = links.length - 1 === num.value ? 0 : ++num.value;
+};
+const discrement = () => {
+  num.value = num.value === 0 ? links.length - 1 : --num.value;
+};
+</script>
+
+<style lang="scss" scoped>
+$promo-info-link-color1: rgb(245, 250, 255);
+
+.promo-info-link {
+  height: 34px;
+  background-color: #17696a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  ul {
+    list-style: none;
+    padding: 0 5px;
+  }
+
+  a {
+    text-decoration: none;
+    color: $promo-info-link-color1;
+    font-size: 13px;
+
+    @include screen-size(sm) {
+      font-size: 12px;
+    }
+
+    span {
+      padding-left: 4px;
+    }
+
+    &:hover {
+      color: #b6fafb;
+    }
+  }
+
+  button {
+    background: none;
+    border: none;
+    color: $promo-info-link-color1;
+    font-size: 9px;
+    cursor: pointer;
+    padding: 5px;
+  }
+}
+
+.color {
+  color: #fff700;
+}
+</style>

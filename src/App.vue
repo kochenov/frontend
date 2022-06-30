@@ -2,15 +2,15 @@
 import { RouterView } from "vue-router";
 
 // Components
-import HeaderPart from "@/components/parts/HeaderPart.vue";
-//import BreadcrumbsNav from "@/components/parts/BreadcrumbsNav.vue";
-//import PromoLink from "@/components/parts/PromoLink.vue";
+import HeaderPart from "@/components/parts/header/HeaderPart.vue";
+import PromoLink from "@/components/parts/header/PromoLink.vue";
+//import BreadcrumbsNav from "@/components/parts/header/BreadcrumbsNav.vue";
 </script>
 
 <template>
   <HeaderPart />
-  <!-- <PromoLink />
-  <BreadcrumbsNav /> -->
+  <PromoLink />
+  <!--<BreadcrumbsNav /> -->
   <RouterView />
 </template>
 
