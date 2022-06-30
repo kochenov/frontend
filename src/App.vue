@@ -1,17 +1,31 @@
 <script setup>
-import { RouterView } from "vue-router";
+import { computed, markRaw, ref, onMounted } from "vue";
+import { RouterView, useRoute } from "vue-router";
 
 // Components
 import HeaderPart from "@/components/parts/header/HeaderPart.vue";
 import PromoLink from "@/components/parts/header/PromoLink.vue";
-//import BreadcrumbsNav from "@/components/parts/header/BreadcrumbsNav.vue";
+import BreadcrumbsNav from "@/components/parts/header/BreadcrumbsNav.vue";
+// LayOuts
+import IndexLayout from "@/views/layouts/IndexLayout.vue";
+import HomeLayout from "@/views/layouts/HomeLayout.vue";
+const route = useRoute();
+const layout = computed(() => {
+  if (route.meta.layout == "home") {
+    return HomeLayout;
+  } else if (route.meta.layout == "index") {
+    return IndexLayout;
+  }
+});
 </script>
 
 <template>
   <HeaderPart />
   <PromoLink />
-  <!--<BreadcrumbsNav /> -->
-  <RouterView />
+  <BreadcrumbsNav v-if="$route.name !== 'home'" />
+  <component :is="layout">
+    <RouterView />
+  </component>
 </template>
 
 <style lang="scss">

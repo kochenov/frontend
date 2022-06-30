@@ -4,7 +4,7 @@ export default [
     name: "home",
     meta: {
       title: "Социальная сеть фермеров, сельских жителей и дачников",
-      layout: "index",
+      layout: "home",
       parent: "home",
     },
     component: () => import("../views/DefaultPage.vue"),
