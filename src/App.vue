@@ -1,6 +1,6 @@
 <script setup>
 import { computed, markRaw, ref, onMounted } from "vue";
-import { RouterView, useRoute } from "vue-router";
+import { useRoute } from "vue-router";
 
 // Components
 import HeaderPart from "@/components/parts/header/HeaderPart.vue";
@@ -23,9 +23,7 @@ const layout = computed(() => {
   <HeaderPart />
   <PromoLink />
   <BreadcrumbsNav v-if="$route.name !== 'home'" />
-  <component :is="layout">
-    <RouterView />
-  </component>
+  <component :is="layout" />
 </template>
 
 <style lang="scss">

@@ -1,12 +1,9 @@
 <template>
-  <div class="page wrap">
-    <main class="page-main home">
-      <slot />
-      Макет Индекс
-    </main>
-  </div>
+  <RouterView />
 </template>
 
-<script setup></script>
+<script setup>
+import { RouterView } from "vue-router";
+</script>
 
 <style lang="scss" scoped></style>
