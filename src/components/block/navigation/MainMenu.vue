@@ -1,5 +1,10 @@
 <script setup>
 import { ref } from "vue";
+import { computed, onMounted } from "vue";
+import { useRouter } from "vue-router";
+import { useAuth } from "@/stores/authStore";
+const authStore = useAuth();
+const checkLogin = computed(() => authStore.loggedIn && !authStore.loading);
 
 const isSubMenu = ref(""); // Название активного Суб Меню
 /**
@@ -293,29 +298,35 @@ const subMenu = {
       id: 1,
       title: "Вход",
       url: "/login",
+      logIn: false,
     },
     {
       id: 2,
       title: "Регистрация",
       url: "/registration",
+      logIn: false,
     },
     {
       id: 3,
       title: "Личный кабинет",
-      url: "/lk",
+      url: "/dashboard",
+      logIn: true,
     },
     {
       id: 4,
       title: "Уведомления",
       url: "/notifications",
+      logIn: true,
     },
     {
       id: 5,
       title: "Выход",
       url: "/logout",
+      logIn: true,
     },
   ],
 };
+
 /**
  * Активация пункта меню,
  *  после перезагрузки страницы активная ссылка меню остаётся активной
@@ -336,6 +347,7 @@ const addActiveClass = (id) => {
  * Суб меню
  * @param {*} r $router
  * @return Возвращает массив обьектов активного субменю
+ * @todo Оптимизировать
  */
 const subMenuActive = (r) => {
   if (typeof r !== "undefined" && isSubMenu.value === "") {
@@ -366,7 +378,11 @@ const subMenuActive = (r) => {
     <div id="sub-menu">
       <ul class="nav__sub-menu">
         <li v-for="(value, index) in subMenuActive($route)" :key="index">
-          <router-link :to="value.url" active-class="active">
+          <router-link
+            v-if="value.logIn === checkLogin || typeof value.logIn == 'undefined'"
+            :to="value.url"
+            active-class="active"
+          >
             {{ value.title }}
           </router-link>
         </li>
