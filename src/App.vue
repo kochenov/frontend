@@ -1,6 +1,7 @@
 <script setup>
 import { computed, markRaw, ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
+import { useAuth } from "@/stores/authStore";
 
 // Components
 import HeaderPart from "@/components/parts/header/HeaderPart.vue";
@@ -9,7 +10,10 @@ import BreadcrumbsNav from "@/components/parts/header/BreadcrumbsNav.vue";
 // LayOuts
 import IndexLayout from "@/views/layouts/IndexLayout.vue";
 import HomeLayout from "@/views/layouts/HomeLayout.vue";
+
 const route = useRoute();
+const authStore = useAuth();
+
 const layout = computed(() => {
   if (route.meta.layout == "home") {
     return HomeLayout;
@@ -22,8 +26,15 @@ const layout = computed(() => {
 <template>
   <HeaderPart />
   <PromoLink />
-  <BreadcrumbsNav v-if="$route.name !== 'home'" />
-  <component :is="layout" />
+  <div v-if="!authStore.loading">
+    <BreadcrumbsNav v-if="$route.name !== 'home'" />
+    <component :is="layout" />
+  </div>
+  <div v-else class="loading">
+    <div>
+      <h1>ЗАГРУЗКА...</h1>
+    </div>
+  </div>
 </template>
 
 <style lang="scss">
@@ -33,10 +44,27 @@ const layout = computed(() => {
   box-sizing: border-box;
 }
 
+#app {
+  height: 100vh;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,200;0,300;0,400;0,600;0,800;1,300;1,500&display=swap");
 
 html {
   font-size: 1px;
+}
+
+.loading {
+  height: calc(100vh - 161px);
+  width: 100%;
+  background: #1944840b;
+  display: flex;
+  flex-direction: row;
+
+  div {
+    color: rgb(45, 45, 36);
+    margin: auto;
+  }
 }
 
 body {
