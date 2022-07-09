@@ -1,8 +1,11 @@
+import { canSeeUser, canSeeUsers } from "@/middleware";
+
 export default [
   {
     path: "/",
     name: "home",
     meta: {
+      requiresAuth: false,
       title: "Социальная сеть фермеров, сельских жителей и дачников",
       layout: "home",
       parent: "home",
@@ -13,6 +16,7 @@ export default [
     path: "/blogers/top",
     name: "BlogersTop",
     meta: {
+      requiresAuth: false,
       layout: "index",
       parent: "home",
       breadcrumbs: [
@@ -32,6 +36,7 @@ export default [
     path: "/video/top",
     name: "VideoTop",
     meta: {
+      requiresAuth: false,
       layout: "index",
       parent: "home",
       breadcrumbs: [
@@ -51,6 +56,7 @@ export default [
     path: "/communities",
     name: "Communities",
     meta: {
+      requiresAuth: false,
       layout: "index",
       parent: "home",
       breadcrumbs: [
@@ -66,6 +72,7 @@ export default [
     path: "/register",
     name: "AuthorRegister",
     meta: {
+      requiresAuth: false,
       layout: "index",
       parent: "home",
       breadcrumbs: [
@@ -85,6 +92,7 @@ export default [
     path: "/news",
     name: "news",
     meta: {
+      requiresAuth: false,
       layout: "index",
       parent: "news",
       breadcrumbs: [
@@ -104,6 +112,7 @@ export default [
     path: "/news/action",
     name: "newsAction",
     meta: {
+      requiresAuth: false,
       layout: "index",
       parent: "news",
       breadcrumbs: [
@@ -123,6 +132,7 @@ export default [
     name: "newUsers",
     path: "/users/new",
     meta: {
+      requiresAuth: false,
       layout: "index",
       parent: "news",
       breadcrumbs: [
@@ -142,6 +152,7 @@ export default [
     path: "/records",
     name: "AuthorRecords",
     meta: {
+      requiresAuth: false,
       layout: "index",
       parent: "news",
       breadcrumbs: [
@@ -156,204 +167,140 @@ export default [
   {
     path: "/about",
     name: "about",
-    meta: {
-      parent: "about",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "about", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/contacts",
     name: "contacts",
-    meta: {
-      parent: "about",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "about", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/for-partners",
     name: "for-partners",
-    meta: {
-      parent: "about",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "about", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/for-authors",
     name: "for-authors",
-    meta: {
-      parent: "about",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "about", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/author/new",
     name: "author-new",
-    meta: {
-      parent: "about",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "about", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/feedback",
     name: "feedback",
-    meta: {
-      parent: "about",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "about", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/rules",
     name: "rules",
-    meta: {
-      parent: "about",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "about", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/bulletin-board",
     name: "bulletinBoard",
-    meta: {
-      parent: "bulletinBoard",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "bulletinBoard", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/real-estate",
     name: "real-estate",
-    meta: {
-      parent: "bulletinBoard",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "bulletinBoard", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/production",
     name: "production",
-    meta: {
-      parent: "bulletinBoard",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "bulletinBoard", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/animals",
     name: "animals",
-    meta: {
-      parent: "bulletinBoard",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "bulletinBoard", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/board-add",
     name: "board-add",
-    meta: {
-      parent: "bulletinBoard",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "bulletinBoard", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/blogs",
     name: "blogs",
-    meta: {
-      layout: "index",
-    },
+    meta: { layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/posts",
     name: "posts",
-    meta: {
-      layout: "index",
-      parent: "blogs",
-    },
+    meta: { requiresAuth: false, layout: "index", parent: "blogs" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/blogers-list",
     name: "blogersList",
-    meta: {
-      layout: "index",
-      parent: "blogs",
-    },
+    meta: { requiresAuth: false, layout: "index", parent: "blogs" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/blogers",
     name: "blogers",
-    meta: {
-      layout: "index",
-      parent: "blogs",
-    },
+    meta: { requiresAuth: false, layout: "index", parent: "blogs" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/create-add-blog",
     name: "createAddBlog",
-    meta: {
-      layout: "index",
-      parent: "blogs",
-    },
+    meta: { requiresAuth: false, layout: "index", parent: "blogs" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/articles",
     name: "articles",
-    meta: {
-      parent: "articles",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "articles", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/articles/useful",
     name: "articlesUseful",
-    meta: {
-      parent: "articles",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "articles", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/articles/vegetable-garden-and-garden",
     name: "articlesVegetableGardenAndGarden",
-    meta: {
-      parent: "articles",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "articles", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/articles/animal-husbandry",
     name: "AnimalHusbandry",
-    meta: {
-      parent: "articles",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "articles", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/articles/create",
     name: "articlesCreate",
-    meta: {
-      parent: "articles",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "articles", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/calculation/seeding",
     name: "seeding",
     meta: {
+      requiresAuth: false,
       title: "Калькулятор расчёта размера грядок овощей",
       layout: "index",
       parent: "seeding",
@@ -374,6 +321,7 @@ export default [
     path: "/calculation/feed",
     name: "calculationFeed",
     meta: {
+      requiresAuth: false,
       layout: "index",
       parent: "seeding",
       breadcrumbs: [
@@ -393,6 +341,7 @@ export default [
     path: "/calculation/weight-control",
     name: "calculationWeightControl",
     meta: {
+      requiresAuth: false,
       layout: "index",
       parent: "seeding",
       breadcrumbs: [
@@ -412,6 +361,7 @@ export default [
     path: "/calculation/bisnes-plans",
     name: "calculationBisnesPlans",
     meta: {
+      requiresAuth: false,
       layout: "index",
       parent: "seeding",
       breadcrumbs: [
@@ -431,6 +381,7 @@ export default [
     path: "/calculation/all-users",
     name: "calculationAllUsers",
     meta: {
+      requiresAuth: false,
       title: "Последние расчёты посльзователей социальной сети",
       layout: "index",
       parent: "seeding",
@@ -450,106 +401,119 @@ export default [
   {
     path: "/сalendars",
     name: "сalendars",
-    meta: {
-      layout: "index",
-    },
+    meta: { requiresAuth: false, layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/task-list",
     name: "taskList",
-    meta: {
-      parent: "сalendars",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "сalendars", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/recomendations",
     name: "recomendations",
-    meta: {
-      parent: "сalendars",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "сalendars", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/user-tasks",
     name: "userTasks",
-    meta: {
-      parent: "сalendars",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "сalendars", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/add-task",
     name: "addTask",
-    meta: {
-      parent: "сalendars",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "сalendars", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/account",
     name: "account",
-    meta: {
-      layout: "index",
-    },
+    meta: { requiresAuth: false, layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/login",
     name: "login",
-    meta: {
-      parent: "account",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "account", layout: "index" },
     component: () => import("../views/auth/LoginPage.vue"),
   },
   {
     path: "/registration",
     name: "registration",
-    meta: {
-      parent: "account",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "account", layout: "index" },
     component: () => import("../views/auth/RegistrationPage.vue"),
-  },
-  {
-    path: "/lk",
-    name: "lk",
-    meta: {
-      parent: "account",
-      layout: "index",
-    },
-    component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/notifications",
     name: "notifications",
-    meta: {
-      parent: "account",
-      layout: "index",
-    },
+    meta: { requiresAuth: false, parent: "account", layout: "index" },
     component: () => import("../views/DefaultPage.vue"),
   },
   {
     path: "/logout",
     name: "logout",
     meta: {
+      requiresAuth: false,
       layout: "index",
       parent: "account",
     },
-    component: () => import("../views/DefaultPage.vue"),
+    component: () => import("@/views/auth/LogoutPage.vue"),
+  },
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    meta: {
+      requiresAuth: true,
+      title: "Личный кабинет пользователя",
+      layout: "index",
+      parent: "account",
+      breadcrumbs: [
+        {
+          name: "Личный кабинет",
+          url: "/dashboard",
+        },
+      ],
+    },
+    component: () => import("@/views/dashboard/Dashboard.vue"),
+  },
+  {
+    path: "/forgot-password",
+    name: "forgotPassword",
+    meta: {
+      requiresAuth: false,
+      title: "Восстановление пароля",
+      layout: "index",
+      parent: "account",
+      breadcrumbs: [
+        {
+          name: "Восстановление пароля",
+          url: "/forgot-password",
+        },
+      ],
+    },
+    component: () =>
+      import(
+        /* webpackChunkName: "ForgotPassword" */ "@/views/ForgotPassword.vue"
+      ),
+  },
+  {
+    path: "/404",
+    name: "notFound",
+    meta: {
+      requiresAuth: false,
+      layout: "index",
+      title: "404: Такой страницы не существует",
+    },
+    component: () => import("@/views/NotFound.vue"),
   },
   {
     path: "/:pathMatch(.*)*",
-    name: "NotFound",
-    meta: {
-      layout: "index",
+    redirect: () => {
+      // catch all redirect to 404
+      return { name: "notFound" };
     },
-    component: () => import("../views/NotFound.vue"),
   },
 ];

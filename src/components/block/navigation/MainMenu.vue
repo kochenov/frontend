@@ -16,6 +16,7 @@ const checkRoute = () => {
 };
 const activeSubMenu = computed(() => {
   checkRoute();
+  // TODO Оптимизивовать скорость загрузки
   if (subMenu[isSubMenu.value]) {
     return subMenu[isSubMenu.value].filter(
       (v) => v.logIn === checkLogin.value || typeof v.logIn == "undefined"
