@@ -22,7 +22,7 @@
           class="box__header-link"
           :class="{ active: currentComponent === item.nameComponent }"
           href="#"
-          @click="$emit('setCurrentComponent', item.nameComponent)"
+          @click.prevent="$emit('setCurrentComponent', item.nameComponent)"
           >{{ item.menu }}</a
         >
       </div>
@@ -34,11 +34,10 @@
 </template>
 <script setup>
 import { useRoute } from "vue-router";
-import { markRaw } from "vue";
 const route = useRoute();
 const props = defineProps({
   tabs: { type: Boolean, default: false },
-  currentComponent: { type: String, require: true },
+  currentComponent: { type: String },
   /**
    * Массив обьектов описывающий вкладки и заголовки компонентов
    *
@@ -202,7 +201,7 @@ const props = defineProps({
   }
 
   &__panel {
-    padding: 20px;
+    padding: 20px 0px 20px 25px;
     position: relative;
     font-size: 14rem;
 
@@ -216,5 +215,12 @@ const props = defineProps({
   &__content {
     padding: 6px;
   }
+}
+
+.wrapper-link-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 0px;
+  justify-content: center;
 }
 </style>
